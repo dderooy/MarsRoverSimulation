@@ -21,3 +21,7 @@ class RoverPlan:
     @property
     def commands(self):
         return self.commands
+
+    @property
+    def startPoint(self):
+        return [self.start_x, self.start_y, self.start_d]

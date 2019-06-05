@@ -114,6 +114,5 @@ class TestPlateau(unittest.TestCase):
         self.assertEqual("Error: {}\n. Rover has crashed into a previous rover!", str(err.exception))
 
 
-
-
-
+if __name__ == '__main__':
+    unittest.main()

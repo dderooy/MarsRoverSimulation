@@ -1,30 +1,15 @@
 import sys
-import re
-from RoverPlan import RoverPlan
 from Plateau import Plateau
+from Parser import Parser
 
 def main ():
-    allStartPoints =[]
-    allCommands = []
-    roverPlans = []
+    parser = Parser()
 
     for line in sys.stdin:
-        line.strip()
-        line.replace(" ", "")
-        patternLRM = re.compile("^[MRL]*$")
+        parser.parseLine(line)
 
-        if len(line) == 2 and line.isdigit():
-            boundary = list(line)
-        elif len(line) == 3 and line[0].isdigit() and line[1].isdigit() and line[2].isalpha():
-            startPoint = list(line)
-            startPoint[2] = startPoint[2].upper()
-            allStartPoints.append(startPoint)
-        elif line.isalpha() and patternLRM.match(line):
-            commands = line.upper()
-            allCommands.append(commands)
-
-    for point, command in zip(allStartPoints, allCommands):
-        roverPlans.append(RoverPlan(point, command))
+    boundary = parser.boundary
+    roverPlans = parser.compileRoverPlans()
 
     plateau = Plateau(boundary, roverPlans)
     plateau.plotRoverCourses()
