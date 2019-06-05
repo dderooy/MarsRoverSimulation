@@ -1,4 +1,6 @@
 
+from Rover import Rover
+
 class Plateau:
 
     def __init__(self, boundary, roverPlans):
@@ -21,6 +23,24 @@ class Plateau:
             else:
                 continue
         return True
+
+    def plotRoverCourses(self):
+        for plan in self.roverPlans:
+            rover = Rover(plan.start_x, plan.start_y, plan.start_d)
+            for command in plan.commands:
+                self.maneuver(command, rover)
+                if self.inBoundary(rover.x, rover.y) and self.noCollision(rover.x, rover.y):
+                    continue
+            self.add_finalPosition([rover.x, rover.y, rover.d])
+
+    @staticmethod
+    def maneuver(command, rover):
+        if command == "L":
+            rover.turnLeft()
+        elif command == "R":
+            rover.turnRight()
+        elif command == "M":
+            rover.move()
 
     @property
     def finalPositions(self):
