@@ -68,6 +68,7 @@ python -m unittest discover
 
 Assumptions:
  - Unix terminal is used for commands
+ - Working directory is /MarsRoverSimulation
  - Python version is 2.7 
  
 
