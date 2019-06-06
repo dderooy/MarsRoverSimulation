@@ -18,15 +18,18 @@ class Parser:
         line = line.replace(' ', '')
         patternLRM = re.compile("^[MRL]*$")
 
+        # parse boundary
         if len(line) == 2 and line.isdigit():
             self.boundary = list(line)
             self.boundary = map(int, self.boundary)
+        # parse starting point
         elif len(line) == 3 and line[0].isdigit() and line[1].isdigit() and line[2].isalpha():
             startPoint = list(line)
             startPoint[0] = int(startPoint[0])
             startPoint[1] = int(startPoint[1])
             startPoint[2] = startPoint[2].upper()
             self.allStartPoints.append(startPoint)
+        # parse command string
         elif line.isalpha() and patternLRM.match(line.upper()):
             commands = line.upper()
             self.allCommands.append(commands)

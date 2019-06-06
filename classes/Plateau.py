@@ -30,7 +30,7 @@ class Plateau:
                 continue
         return True
 
-    # plots all the rover plans and checks collisions and boundaries. Stores final resutls in 'finalPositions'
+    # plots all the rover plans and checks collisions and boundaries. Stores final results in 'finalPositions'
     def plotRoverCourses(self):
         for plan in self.roverPlans:
             rover = Rover(plan.start_x, plan.start_y, plan.start_d)
