@@ -1,5 +1,8 @@
+#!/usr/bin/env python
 
-
+"""
+RoverPlan is used to store each rover start point and command string. It also helps improve code readability.
+"""
 class RoverPlan:
 
     def __init__(self, start, commands):

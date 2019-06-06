@@ -1,0 +1,9 @@
+//Test with collision course
+
+ 5 5
+
+ 1 2 N
+ LMLMLMLMM
+
+ 2 1 N
+ MMLMMRM

@@ -1,13 +1,15 @@
+#!/usr/bin/env python
 import unittest
 
-from Parser import Parser
+from classes.Parser import Parser
 
 
 class TestParser(unittest.TestCase):
 
     def test_Parse_Boundary(self):
         parser = Parser()
-        parser.parseLine(" 5 5 ")
+        line = " 5 5  "
+        parser.parseLine(line)
         self.assertEqual([5, 5], parser.boundary)
 
     def test_Parse_StartPoint(self):
@@ -38,6 +40,19 @@ class TestParser(unittest.TestCase):
         self.assertEqual([3, 4, "W"], plans[1].startPoint)
         self.assertEqual("RMRMRMRM", plans[1].commands)
 
+    def test_Parse_EmptyLines(self):
+        lines = [" 5 5 ", "    ",  " 1  2  E   ", "    ", "  LMlmLMlm", " 3  4W    ", "    ", " RM rm RM r m    "]
+        parser = Parser()
+
+        for line in lines:
+            parser.parseLine(line)
+
+        plans = parser.compileRoverPlans()
+        self.assertEqual(2, len(plans))
+        self.assertEqual([1, 2, "E"], plans[0].startPoint)
+        self.assertEqual("LMLMLMLM", plans[0].commands)
+        self.assertEqual([3, 4, "W"], plans[1].startPoint)
+        self.assertEqual("RMRMRMRM", plans[1].commands)
 
 if __name__ == '__main__':
     unittest.main()

@@ -1,3 +1,5 @@
+//This is the provided test data
+
 5 5
 1 2 N
 LMLMLMLMM

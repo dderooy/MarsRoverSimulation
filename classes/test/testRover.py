@@ -1,7 +1,7 @@
+#!/usr/bin/env python
 import unittest
 
-from Rover import Rover
-
+from classes.Rover import Rover
 
 
 class TestRover(unittest.TestCase):

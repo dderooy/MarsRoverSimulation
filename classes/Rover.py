@@ -1,5 +1,8 @@
+#!/usr/bin/env python
 
-
+"""
+Rover contains the basic functions to move and turn. Also contains x, y, and d (direction) state
+"""
 class Rover:
     
     def __init__(self, x, y, d):

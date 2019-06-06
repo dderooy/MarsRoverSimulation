@@ -1,8 +1,9 @@
+#!/usr/bin/env python
 import unittest
 
-from Plateau import Plateau
-from Rover import Rover
-from RoverPlan import RoverPlan
+from classes.Plateau import Plateau
+from classes.Rover import Rover
+from classes.RoverPlan import RoverPlan
 
 
 class TestPlateau(unittest.TestCase):
@@ -65,7 +66,7 @@ class TestPlateau(unittest.TestCase):
         self.assertEqual("Error: {}\n. Rover has crashed into a previous rover!", str(err.exception))
 
     def test_Maneuver(self):
-        p = Plateau([5, 5],[])
+        p = Plateau([5, 5], [])
         r = Rover(0, 0, "N")
         p.maneuver("M", r)
         self.assertEqual(1, r.y)

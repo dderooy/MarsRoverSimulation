@@ -1,6 +1,10 @@
+#!/usr/bin/env python
 import re
-from RoverPlan import RoverPlan
+from classes.RoverPlan import RoverPlan
 
+"""
+Parser class to parse input
+"""
 class Parser:
 
     def __init__(self):
@@ -9,6 +13,7 @@ class Parser:
         self.boundary = []
         self.roverPlans = []
 
+    # function filters each input line into respective data structures
     def parseLine(self, line):
         line = line.replace(' ', '')
         patternLRM = re.compile("^[MRL]*$")
@@ -26,6 +31,7 @@ class Parser:
             commands = line.upper()
             self.allCommands.append(commands)
 
+    # function to return list of rover plans containing start point and command string for each rover
     def compileRoverPlans(self):
         self.roverPlans = []
         for point, command in zip(self.allStartPoints, self.allCommands):
@@ -34,12 +40,13 @@ class Parser:
 
     @property
     def boundary(self):
-        return self.boundary;
+        return self.__boundary
 
+    # convenience functions for testing
     @property
     def allStartPoints(self):
-        return self.allStartPoints;
+        return self.__allStartPoints
 
     @property
     def allCommands(self):
-        return self.allCommands;
+        return self.__allCommands

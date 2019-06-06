@@ -1,6 +1,10 @@
+#!/usr/bin/env python
+from classes.Rover import Rover
 
-from Rover import Rover
-
+"""
+Plateau represents the plane or surface the rovers land on. Contains functions to check for boundary and 
+collision errors. The final answers are stored in 'finalPositions'
+"""
 class Plateau:
 
     def __init__(self, boundary, roverPlans):
@@ -8,6 +12,7 @@ class Plateau:
         self.roverPlans = roverPlans
         self.finalPositions = []
 
+    # checks for boundary errors
     def inBoundary(self, x, y):
         if 0 <= x <= self.boundary[0] and 0 <= y <= self.boundary[1]:
             return True
@@ -15,6 +20,7 @@ class Plateau:
             raise ValueError("Error: {}\n. Rover has gone out of bounds!")
             return False
 
+    # checks for collisions with previous rovers
     def noCollision(self, x, y):
         for p in self.finalPositions:
             if x == p[0] and y == p[1]:
@@ -24,6 +30,7 @@ class Plateau:
                 continue
         return True
 
+    # plots all the rover plans and checks collisions and boundaries. Stores final resutls in 'finalPositions'
     def plotRoverCourses(self):
         for plan in self.roverPlans:
             rover = Rover(plan.start_x, plan.start_y, plan.start_d)
@@ -33,6 +40,7 @@ class Plateau:
                     continue
             self.add_finalPosition([rover.x, rover.y, rover.d])
 
+    # convenience method
     @staticmethod
     def maneuver(command, rover):
         if command == "L":
@@ -42,6 +50,7 @@ class Plateau:
         elif command == "M":
             rover.move()
 
+    # list of final results
     @property
     def finalPositions(self):
         return self.__finalPositions
