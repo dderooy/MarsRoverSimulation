@@ -6,7 +6,7 @@ from classes.Rover import Rover
 
 class TestRover(unittest.TestCase):
 
-    def test_turnLeft(self):
+    def test_Turn_Left(self):
         r = Rover(0, 0, "N")
         r.turnLeft()
         self.assertEqual("W", r.d)
@@ -17,7 +17,7 @@ class TestRover(unittest.TestCase):
         r.turnLeft()
         self.assertEqual("N", r.d)
 
-    def test_turnRight(self):
+    def test_Turn_Right(self):
         r = Rover(0, 0, "N")
         r.turnRight()
         self.assertEqual("E", r.d)
@@ -28,7 +28,7 @@ class TestRover(unittest.TestCase):
         r.turnRight()
         self.assertEqual("N", r.d)
 
-    def test_moveForward(self):
+    def test_Move_Forward(self):
         r = Rover(0, 0, "N")
         r.move()
         self.assertEqual(1, r.y)

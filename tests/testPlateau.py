@@ -8,14 +8,14 @@ from classes.RoverPlan import RoverPlan
 
 class TestPlateau(unittest.TestCase):
 
-    def test_InBoundary(self):
+    def test_In_Boundary(self):
         boundary = [5, 5]
         p = Plateau(boundary, [])
         self.assertTrue(p.inBoundary(0, 0))
         self.assertTrue(p.inBoundary(5, 5))
         self.assertTrue(p.inBoundary(3, 2))
 
-    def test_OutBoundary(self):
+    def test_Out_Boundary(self):
         boundary = [5, 5]
         p = Plateau(boundary, [])
         with self.assertRaises(ValueError) as err:
@@ -31,7 +31,7 @@ class TestPlateau(unittest.TestCase):
             p.inBoundary(0, 6)
         self.assertEqual("Error: {}\n. Rover has gone out of bounds!", str(err.exception))
 
-    def test_FinalPostions(self):
+    def test_Final_Postions(self):
         p = Plateau([], [])
         p.add_finalPosition([2, 3, "N"])
         self.assertEqual(2, p.finalPositions[0][0])
@@ -42,7 +42,7 @@ class TestPlateau(unittest.TestCase):
         self.assertEqual(2, p.finalPositions[1][1])
         self.assertEqual("E", p.finalPositions[1][2])
 
-    def test_NoCollision(self):
+    def test_No_Collision(self):
         p = Plateau([], [])
         self.assertTrue(p.noCollision(1, 1))
         p.add_finalPosition([2, 3, "N"])
@@ -80,7 +80,7 @@ class TestPlateau(unittest.TestCase):
         p.maneuver("R", r)
         self.assertEqual("S", r.d)
 
-    def test_PlotCourseSuccess(self):
+    def test_PlotCourse_Success(self):
         plan1 = RoverPlan([1, 2, "N"], "LMLMLMLMM")
         plan2 = RoverPlan([3, 3, "E"], "MMRMMRMRRM")
         roverPlans = [plan1, plan2]

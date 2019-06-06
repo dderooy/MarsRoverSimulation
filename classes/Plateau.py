@@ -40,7 +40,7 @@ class Plateau:
                     continue
             self.add_finalPosition([rover.x, rover.y, rover.d])
 
-    # convenience method
+    # convenience method for readability
     @staticmethod
     def maneuver(command, rover):
         if command == "L":

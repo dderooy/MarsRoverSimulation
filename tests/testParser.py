@@ -12,7 +12,7 @@ class TestParser(unittest.TestCase):
         parser.parseLine(line)
         self.assertEqual([5, 5], parser.boundary)
 
-    def test_Parse_StartPoint(self):
+    def test_Parse_Start_Point(self):
         parser = Parser()
         parser.parseLine(" 1  2  E   ")
         self.assertEqual([1, 2, "E"], parser.allStartPoints[0])
@@ -40,7 +40,7 @@ class TestParser(unittest.TestCase):
         self.assertEqual([3, 4, "W"], plans[1].startPoint)
         self.assertEqual("RMRMRMRM", plans[1].commands)
 
-    def test_Parse_EmptyLines(self):
+    def test_Parse_Empty_Lines(self):
         lines = [" 5 5 ", "    ",  " 1  2  E   ", "    ", "  LMlmLMlm", " 3  4W    ", "    ", " RM rm RM r m    "]
         parser = Parser()
 
